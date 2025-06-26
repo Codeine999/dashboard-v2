@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  vite:
+    build: .
+    ports:
+      - "5173:5173"
+    volumes:
+      - .:/app             # แมปโฟลเดอร์โปรเจกต์เข้า container
+      - /app/node_modules  # ป้องกัน node_modules ของ host ทับ container
+    command: npm run dev -- --host
