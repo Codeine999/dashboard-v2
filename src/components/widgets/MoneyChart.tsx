@@ -25,7 +25,7 @@ const chartConfig = {
 } satisfies ChartConfig
 
 
-const MoneyChart = () => {
+const MoneyChart = ({ selected }: { selected: string }) => {
   const [screenSize, setScreenSize] = useState<number>(0);
 
   useEffect(() => {
@@ -45,9 +45,11 @@ const MoneyChart = () => {
 
 
   const barSize = isDesktop ? 45 : isNotebook ? 40 : isTablet ? 40 : 35;
-  return (
 
-    <div className='lg:-mx-10 -mx-6'>
+  const currentData = weekmoneyData.find((c) => c.label === selected)?.data || [];
+
+  return (
+    <div className='lg:-mx-10 md:-mx-6 -mx-6 mt-1'>
       <CardHeader>
         <CardDescription className='lg:px-4 text-sm flex'>
           Trending up by 5.2% this month
@@ -62,7 +64,7 @@ const MoneyChart = () => {
         <BarChart
           accessibilityLayer
           barSize={barSize}
-          data={weekmoneyData}
+          data={currentData}
           margin={{ left: isDesktop ? 0 : isNotebook ? -12 : isTablet ? -10 : -15 }}
         >
           <XAxis
@@ -70,7 +72,7 @@ const MoneyChart = () => {
             tickLine={false}
             tickMargin={10}
             axisLine={false}
-            tickFormatter={(value) => value.slice(0, 3)}
+            tickFormatter={(value) => value.slice(0, 5)}
             tick={{ fill: "#000000", fontSize: 12 }}
           />
 
@@ -84,13 +86,8 @@ const MoneyChart = () => {
         </BarChart>
       </ChartContainer>
 
-
-
-
     </div>
-
-
-  )
-}
+  );
+};
 
 export default MoneyChart

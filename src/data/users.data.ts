@@ -65,31 +65,4 @@ export const users = [
         adress: "20/12 Prukasa Village 5 Bangyai Nonthubari 11140",
         image: Profile
     },
-    {
-        username: "Codeine3",
-        firstName: "Petubda3",
-        lastName: "Paksa3",
-        email: "codeine@gmail.com",
-        phone: "0988323099",
-        adress: "20/12 Prukasa Village 5 Bangyai Nonthubari 11140",
-        image: Profile
-    },
-    {
-        username: "Codeine4",
-        firstName: "Petubda4",
-        lastName: "Paksa4",
-        email: "codeine@gmail.com",
-        phone: "0988323099",
-        adress: "20/12 Prukasa Village 5 Bangyai Nonthubari 11140",
-        image: Profile
-    },
-        {
-        username: "Codeine5",
-        firstName: "Petubda5",
-        lastName: "Paksa5",
-        email: "codeine@gmail.com",
-        phone: "0988323099",
-        adress: "20/12 Prukasa Village 5 Bangyai Nonthubari 11140",
-        image: Profile
-    },
 ]

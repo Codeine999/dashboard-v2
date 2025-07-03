@@ -31,23 +31,32 @@ import {
   DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
+  DropdownMenuShortcut,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+} from "@/components/ui/dropdown-menu"
+import { Button } from "@/components/ui/button";
 import { Wrapper, Header, ButtonAdd } from "@/components/Components";
 
-import { MessageSquareText, SquarePen, Search } from "lucide-react";
+import {
+  MessageSquareText,
+  SquarePen,
+  Search,
+  Download,
+  Trash2
+}
+  from "lucide-react";
 
 import { users } from "@/data/users.data";
 
 const User = () => {
   return (
-    <div className="mt-6 mb-5">
+    <div className="mt-10 2xl:px-28 max-w-8xl mx-auto mb-12">
       <div className="flex justify-between items-center">
         <div className="px-4">
-          <div className="flex gap-4">
-            <button className="cursor-pointer text-color text-md">All</button>
-            <span className="text-color">|</span>
-            <button className="cursor-pointer text-color text-md">Admin</button>
+          <div className="flex gap-4 items-center">
+            <button className="cursor-pointer text-color text-sm">All</button>
+            <span className="text-normal text-sm">|</span>
+            <button className="cursor-pointer text-normal text-sm">Admin</button>
           </div>
         </div>
         <div>
@@ -62,7 +71,7 @@ const User = () => {
             focus-within:ring-1 focus-within:ring-[#9369db] transition"
           >
             <div className="flex px-3 items-center h-full">
-              <Search className="mr-2 text-[#667085]" />
+              <Search className="mr-2 text-[#879da7]" />
               <input
                 type="text"
                 placeholder="Search..."
@@ -70,10 +79,10 @@ const User = () => {
               // onChange={handleSearchChange}
               />
               <div
-                className="ml-auto w-[32px] h-[22px] bg-[#f9fafb] border border-[#e6e7eb]
+                className="ml-auto w-[32px] h-[22px]  border
                flex justify-center items-center rounded-sm"
               >
-                <p className="text-xs text-[#667085]">
+                <p className="text-xs text-[#879da7] p-1">
                   ⌘<span className="ml-[2px]">K</span>
                 </p>
               </div>
@@ -81,9 +90,48 @@ const User = () => {
           </div>
         </div>
 
-        <div className="px-4">
-          export
-        </div>
+
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="filter">
+              <div className="flex items-center gap-1 text-[#879da7] ">
+                Export
+                <Download className="!w-4 !h-3.6" />
+              </div>
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent className="w-56" align="start">
+            <DropdownMenuGroup>
+              <DropdownMenuItem>
+                <img
+                  src="/icon/excel.png"
+                  className="w-5 h-5"
+                />
+                Excel
+                <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <img
+                  src="/icon/excel.png"
+                  className="w-5 h-5"
+                />
+                Excel
+                <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <img
+                  src="/icon/excel.png"
+                  className="w-5 h-5"
+                />
+                Excel
+                <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
+              </DropdownMenuItem>
+
+            </DropdownMenuGroup>
+          </DropdownMenuContent>
+
+        </DropdownMenu>
+
 
       </div>
 
@@ -93,25 +141,25 @@ const User = () => {
           <Table className="min-w-[900px] table-fixed">
             <TableHeader className="h-[55px]">
               <TableRow>
-                <TableHead className="w-[100px] px-6 text-[#879da7] pt-2">
+                <TableHead className="w-[100px] px-6 text-[#879da7] font-semibold">
                   Picture
                 </TableHead>
-                <TableHead className="w-[150px] px-4 text-[#879da7] pt-2">
+                <TableHead className="w-[150px] px-4 text-[#879da7] font-semibold">
                   Username
                 </TableHead>
-                <TableHead className="w-[150px] px-6 text-[#879da7] pt-2">
+                <TableHead className="w-[150px] px-6 text-[#879da7] font-semibold">
                   First Name
                 </TableHead>
-                <TableHead className="w-[180px] px-[6px] text-[#879da7] pt-2">
+                <TableHead className="w-[180px] px-[6px] text-[#879da7] font-semibold">
                   Email
                 </TableHead>
-                <TableHead className="w-[120px] text-center text-[#879da7] pt-2">
+                <TableHead className="w-[120px] text-center text-[#879da7] font-semibold">
                   Role
                 </TableHead>
-                <TableHead className="w-[120px] text-center text-[#879da7] pt-2">
+                <TableHead className="w-[120px] text-center text-[#879da7] font-semibold">
                   Status
                 </TableHead>
-                <TableHead className="w-[120px] text-center text-[#879da7] pt-2">
+                <TableHead className="w-[120px] text-center text-[#879da7] font-semibold">
                   Action
                 </TableHead>
               </TableRow>
@@ -124,36 +172,43 @@ const User = () => {
             <TableBody>
               {users.map((items, index) => (
                 <TableRow key={index}>
-                  <TableCell className="w-[100px] px-6 py-1 pb-4">
+                  <TableCell className="w-[100px] px-6 py-2.5">
                     <img
                       src={items.image}
                       alt="img"
-                      className="w-[35px] h-[35px] object-contain rounded-full"
+                      className="w-[34px] h-[34px] object-cover rounded-full"
                     />
                   </TableCell>
-                  <TableCell className="w-[150px] text-sm px-4 font-semibold whitespace-nowrap overflow-hidden truncate">
+                  <TableCell className="w-[150px] text-sm px-4 font-medium whitespace-nowrap overflow-hidden text-normal">
                     {items.username}
                   </TableCell>
-                  <TableCell className="w-[150px] text-sm  px-6 whitespace-nowrap overflow-hidden truncate">
+                  <TableCell className="w-[150px] text-sm px-6 font-medium  whitespace-nowrap overflow-hidden text-normal">
                     {items.firstName}
                   </TableCell>
-                  <TableCell className="w-[180px] text-sm  text-left whitespace-nowrap overflow-hidden truncate">
+                  <TableCell className="w-[180px] text-sm text-left font-medium whitespace-nowrap overflow-hidden text-normal">
                     {items.email}
                   </TableCell>
-                  <TableCell className="w-[120px] text-center whitespace-nowrap">
+                  <TableCell className="w-[120px] text-center font-medium  whitespace-nowrap text-normal">
                     user
                   </TableCell>
-                  <TableCell className="w-[120px] text-center whitespace-nowrap">
+                  <TableCell className="w-[120px] text-center font-medium  whitespace-nowrap text-normal">
                     VIP
                   </TableCell>
-                  <TableCell className="w-[120px] text-center">
-                    <div className="flex justify-center gap-2">
-                      <button className="text-slate-400 hover:bg-red-400 p-1 rounded-sm">
-                        <MessageSquareText className="w-6 h-6" />
-                      </button>
-                      <button className="text-slate-400 hover:bg-red-400 p-1 rounded-sm">
-                        <SquarePen className="w-6 h-6" />
-                      </button>
+                  <TableCell className="w-[110px]">
+                    <div className="flex justify-center items-center">
+
+                      <Button variant="ghost" className="text-slate-400  cursor-pointer -mx-2">
+                        <MessageSquareText className="!w-5.5 !h-5.5" />
+                      </Button>
+
+                      <Button variant="ghost" className="text-yellow-500 cursor-pointer">
+                        <SquarePen className="!w-5.5 !h-5.5" />
+                      </Button>
+
+                      <Button variant="ghost" className="text-red-400 cursor-pointer -mx-2">
+                        <Trash2 className="!w-5.5 !h-5.5" />
+                      </Button>
+
                     </div>
                   </TableCell>
                 </TableRow>

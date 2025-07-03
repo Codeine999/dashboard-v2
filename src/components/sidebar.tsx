@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useLocation, Link } from "react-router-dom";
+import { useTheme } from "@/components/context/themeProvider"
+
 import {
   Sidebar,
   SidebarContent,
@@ -30,6 +32,7 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
+
 import {
   Calendar,
   Home,
@@ -40,6 +43,8 @@ import {
   Plus,
   Projector,
 } from "lucide-react";
+
+import NextIcons from "@/assets/nexticon.svg"
 import NextIcon from "@/assets/next-icon.svg"
 
 
@@ -66,18 +71,15 @@ const items = [
   },
   {
     title: "Overview",
-    url: "/admin",
+    url: "../",
     icon: Search,
   },
-  {
-    title: "Settings",
-    url: "/setting",
-    icon: Settings,
-  },
+
 ];
 
 const sidebar = () => {
   const location = useLocation();
+  const { theme } = useTheme();
   const [activeMenu, setActiveMenu] = useState<string>("");
 
   return (
@@ -86,9 +88,15 @@ const sidebar = () => {
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton asChild className="flex start">
-              <Link to="">
-                <img src={NextIcon} alt="logo" className="w-8 h-8" />
-                <span className="text-[16px]">Wake Up</span>
+              <Link to="/">
+                <div className="-mx-1.5 flex items-center gap-3">
+                  {theme === "dark" ? (
+                    <img src={NextIcons} alt="logo" className="w-7 h-7" />
+                  ) : (
+                    <img src={NextIcon} alt="logo" className="w-7 h-7" />
+                  )}
+                  <span className="md:text-md text-lg text-color font-normal">Sasom</span>
+                </div>
               </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
@@ -105,11 +113,17 @@ const sidebar = () => {
                 <SidebarMenuItem key={item.title} className="rounded-2xl">
                   <SidebarMenuButton
                     asChild
-                    isActive={location.pathname === item.url}
+                    isActive={
+                      item.url === "/"
+                        ? location.pathname === "/"
+                        : location.pathname.startsWith(item.url)
+                    }
                   >
                     <NavLink to={item.url}>
-                      <item.icon className="w-5 h-5" />
-                      <span>{item.title}</span>
+                      <p className="font-normal flex items-center gap-2">
+                        <item.icon className="w-5 h-5" />
+                        {item.title}
+                      </p>
                     </NavLink>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
@@ -119,7 +133,7 @@ const sidebar = () => {
                 <SidebarGroup>
                   <SidebarGroupLabel asChild>
                     <CollapsibleTrigger className="cursor-pointer">
-                       Web Site
+                      Ai Work Flow
                       <ChevronDown
                         className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-180
                           cursor-pointer"
@@ -133,13 +147,13 @@ const sidebar = () => {
                           <SidebarMenuButton asChild>
                             <NavLink to="/#">
                               <Projector />
-                              Meta Tags
+                              Ai Chat Bot
                             </NavLink>
-                            
-                            
+
+
                           </SidebarMenuButton>
                         </SidebarMenuItem>
-                        
+
                       </SidebarMenu>
                     </SidebarGroupContent>
                   </CollapsibleContent>

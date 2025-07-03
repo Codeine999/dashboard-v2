@@ -18,16 +18,21 @@ const buttonVariants = cva(
         secondary:
           "bg-secondary text-secondary-foreground shadow-xs hover:bg-secondary/80",
         ghost:
-          "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",
+          "hover:bg-icons-hover",
         link: "text-primary underline-offset-4 hover:underline cursor-pointer",
-        nav: 
+        nav:
           "bg-background rounded-full border-1 text-[#6f7d9a]",
-        arrow: 
-          "bg-white w-[40px] border border-[#e5e7eb] rounded-md shadow-xs cursor-pointer",
+        arrow:
+          " w-[40px] rounded-md shadow-xs cursor-pointer",
         confirm:
           "w-[160px] cursor-pointer",
-
+        filter:
+          "!px-3 !py-[18px] bg-background rounded-md border-1 cursor-pointer hover:bg-gray-100",
+        add:
+          "!h-[40px] bg-add-button text-white font-bold rounded-md border-1 cursor-pointer",
       },
+
+
       size: {
         default: "h-9 px-4 py-2 has-[>svg]:px-3",
         sm: "h-8 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5",

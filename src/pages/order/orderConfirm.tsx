@@ -15,22 +15,31 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb"
 
 import { orderdetail, ordernotic } from "@/data/order.data"
-import { 
-  AArrowDown, 
-  Trash, 
-  ChevronDown, 
-  Layers2, 
-  CreditCard, 
-  PackageSearch, 
+import {
+  AArrowDown,
+  Trash,
+  ChevronDown,
+  Layers2,
+  CreditCard,
+  PackageSearch,
   Truck,
   Download,
   MessageSquare,
   ChevronRight,
-  ChevronLeft
+  ChevronLeft,
+  Trash2
 } from 'lucide-react';
-import { Header, HeadText, SubText, ButtonAdd } from "@/components/Components"; 
+import { Header, HeadText, SubText, ButtonAdd } from "@/components/Components";
 import Spinner from "@/assets/spin.svg";
 
 
@@ -48,7 +57,7 @@ const orderConfirm = () => {
 
   const { id } = useParams();
   const [orderData, setOrderData] = useState(null);
-  const [loading, setLoading] = useState(true); 
+  const [loading, setLoading] = useState(true);
 
   const [progress, setProgress] = useState([0, 0, 0, 0]);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -61,10 +70,10 @@ const orderConfirm = () => {
   const totalPages = Math.ceil(orderdetail.length / itemsPerPage) || 1;
 
 
-   useEffect(() => {
-     const order = ordernotic.find(order => order.orderID === id);
-     console.log("Received ID from URL:", order);
-    setOrderData(order); 
+  useEffect(() => {
+    const order = ordernotic.find(order => order.orderID === id);
+    console.log("Received ID from URL:", order);
+    setOrderData(order);
     setLoading(false);
   }, [id]);
 
@@ -128,24 +137,30 @@ const orderConfirm = () => {
   };
 
   return (
- <div className='mt-[27px] mb-10'>
-      <div className='flex justify-between'>
-        <div className="mt-2">
-          <h1 className="text-[22px]">Order Number {id}</h1>
-          <p className="text-[16px] text-gray-600">order from {orderData?.username}</p>
-        </div>
-        <div className="mt-2">
-          <ButtonAdd onClick={console.log()} title="Add Product +" />
+    <div className='max-w-6xl mx-auto mt-2 mb-6'>
+      <Breadcrumb>
+        <BreadcrumbList>
+          <BreadcrumbItem>
+            <BreadcrumbLink href="/order" className="text-xs">Order</BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbSeparator />
+          <BreadcrumbItem>
+            <BreadcrumbPage className="text-xs">Confirm Order</BreadcrumbPage>
+          </BreadcrumbItem>
+        </BreadcrumbList>
+      </Breadcrumb>
+      <div className='mt-2 flex justify-start'>
+        <div className="mt-2 px-2">
+          <p className="text-md">Order Number {id}</p>
         </div>
       </div>
 
       {/* Process Shipping */}
-      <div className="md:flex gap-4 mt-4">
-        <div 
-          className="bg-white shadow-[1px_1px_1px_1px_rgba(0,0,0,0.1)] xl:w-[70%] md:w-[68%] md:h-[200px]
+      <div className="md:flex 2xl:gap-8 gap-4 mt-4">
+        <div
+          className="bg-background shadow-[1px_1px_1px_1px_rgba(0,0,0,0.1)] xl:w-[70%] md:w-[68%] md:h-[200px]
             w-full h-[180px] rounded-lg"
         >
-
           <div className='md:px-6 px-4 mt-4'>
             <div className="flex justify-between">
               <div className="md:mt-0 mt-2">
@@ -157,10 +172,10 @@ const orderConfirm = () => {
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
                     <div className="flex cursor-pointer md:mt-2 mt-4">
-                      <div className="text-blue-gray-500 font-sans whitespace-nowrap md:text-[16px] text-[14px]">
+                      <span className="text-color whitespace-nowrap text-sm">
                         {status}
-                      </div>
-                      <ChevronDown className="md:w-5 w-4 h-5  text-blue-gray-500 md:mt-[6px] pt-1"
+                      </span>
+                      <ChevronDown className="md:w-4.5 w-4 h-4 mt-0.5 text-color "
                         style={{ strokeWidth: 3 }} />
                     </div>
                   </DropdownMenuTrigger>
@@ -178,10 +193,10 @@ const orderConfirm = () => {
                       >
                         Paid
                       </DropdownMenuItem>
-                      <DropdownMenuItem 
+                      <DropdownMenuItem
                         onClick={() => handleChangeStatus('Cancell Order')}
                         className="text-gray-700"
-                        >
+                      >
                         Cancell Order
                       </DropdownMenuItem>
                     </DropdownMenuGroup>
@@ -191,14 +206,14 @@ const orderConfirm = () => {
             </div>
 
             <div className='mt-2 md:px-6'>
-              <div className='bg-gray-200 w-full h-[95px] rounded-lg'>
+              <div className='bg-background-main w-full h-[95px] rounded-lg'>
 
                 <div className='p-2 flex justify-center md:gap-4 gap-2'>
                   {steps.map((label, index) => (
-                    <div key={index} className='bg-[#feffff] w-[130px] h-[80px] rounded-lg'>
+                    <div key={index} className='bg-background w-[130px] h-[80px] rounded-lg'>
                       <div className='mt-2 px-2'>
                         {icons[index]}
-                        <p className='md:text-[14px] text-[13px] mt-1'>{label}</p>
+                        <p className='2xl:text-sm text-xs mt-1.5 text-color'>{label}</p>
                         <div
                           className="h-1 mt-2 bg-green-500 rounded-full transition-all duration-1000 ease-in-out"
                           style={{ width: `${progress[index]}%` }}
@@ -213,8 +228,8 @@ const orderConfirm = () => {
         </div>
 
 
-        <div className="bg-white shadow-md md:mt-0 mt-4 3xl:h-[280px] md:w-[30%] 
-          h-[265px] rounded-lg"
+      <div className="bg-background shadow-md md:mt-0 mt-4 3xl:h-[280px] md:w-[30%] 
+          h-[265px] rounded-lg border-1"
         >
           <div className="p-4">
             <div className="flex justify-between">
@@ -222,15 +237,15 @@ const orderConfirm = () => {
                 <HeadText title="Payments" />
                 <SubText title="Final price" />
               </div>
-              <div className="flex mt-[-25px] gap-1">
-                <Download className="3xl:mt-[32px] xl:mt-[26px] mt-[28px] w-4 h-5" />
-                <button className="text-[14px] text-[#7990bb]">Download invoice</button>
+              <div className="flex ml-auto items-center gap-2">
+                <Download className="w-4 h-5 text-[#7794ca]" />
+                <button className="text-xs text-[#7990bb] cursor-pointer">Download invoice</button>
               </div>
             </div>
           </div>
 
           <div className="mx-4">
-            <div className="bg-[#f2f2f2] w-full 3xl:h-[170px] h-[160px] rounded-lg p-4">
+            <div className="bg-background-main w-full 3xl:h-[170px] h-[160px] rounded-lg p-4">
               <div className="flex justify-between mt-[-4px]">
                 <div className="3xl:text-[18px] text-[15px]">
                   Subtotal
@@ -265,13 +280,13 @@ const orderConfirm = () => {
                   sprits
                 </div>
               </div>
-              <div className="bg-gray-300 w-full h-[0.8px] 3xl:mt-[8px] mt-3 mb-2" />
+              <div className="border-1 w-full 3xl:mt-[8px] mt-3 mb-2" />
 
               <div className="flex justify-between">
                 <div className="3xl:text-[20px] text-[18px]">
                   total
                 </div>
-                <div className="3xl:text-[20px] text-[18px] font-bold">
+                <div className="3xl:text-[20px] text-[18px] font-semibold">
                   14500
                 </div>
               </div>
@@ -282,55 +297,50 @@ const orderConfirm = () => {
       </div>
 
       {/* Product Order */}
-      <div className="md:flex 3xl:mt-[-20px] md:mt-[-10px] mt-4 gap-4">
-        <div className="bg-white border 3xl:h-[600px] md:w-[70%]  
-          h-[490px] w-full md:mt-[-40px] mt-1.5 rounded-lg relative">
-          <div>
-            <div className="flex justify-between mt-3 mx-7">
-              <div>
-                <p className="3xl:text-[18px] text-[#879da7] font-bold">Product</p>
-              </div>
-              <div>
-                <img src={Spinner} alt="Loading..." className="w-12 h-9 mt-0" />
-                {/* {status === 'Paid' ? (
-                  <Status status={status} className="" />
-                ) : (
-                  <img src={Spinner} alt="Loading..." className="w-12 h-9 mt-0" />
-                )} */}
-              </div>
-            </div>
+      <div className="md:flex 3xl:mt-[-20px] md:mt-[-10px] mt-4 2xl:gap-8 gap-4">
+        <div
+          className="bg-background border xl:h-[520px] md:w-[70%]
+           md:h-[510px] h-[708px] w-full md:mt-[-40px] mt-1.5 rounded-lg shadow-sm relative"
+        >
+
+          <div className="flex justify-between mt-2.5 mb-1 border-b-1">
+            <p className="text-[#879da7] font-semibold mx-4 mb-2">Products</p>
           </div>
 
-          <div className="relative sm:rounded-lg">
-            <div className="w-full table-fixed  text-gray-700 text-sm">
+          <div className="relative rounded-lg md:h-[400px] h-[605px]">
+            <div className="w-full table-fixed text-sm">
               <div>
                 {currentItems.map((product, index) => (
-                  <div key={index} className="  ">
-
+                  <div key={index} className="border-b-1">
                     <div className="flex justify-between">
                       <div className="lg:m-2 m-2 mx-6 flex">
-                        <img src={product.img} className="w-[70px] h-[45px] object-contain" alt="Product" />
+                        <img
+                          src={product.img}
+                          alt={product.name}
+                          className="md:mt-2 mt-6 w-[70px] h-[45px] object-contain"
+                        />
                         <div className="mt-1 mx-5 ">
-                          <h1 className="w-[140px]">{product.name}</h1>
-                          <div className="flex gap-5 text-gray-500">
-                            <h2>Size Xs</h2>
-                            <h3>quantity 1</h3>
+                          <p className="w-[140px] text-normal">{product.name}</p>
+                          <div className="flex md:flex-row flex-col md:gap-4 text-gray-500">
+                            <p className="whitespace-nowrap">Sku: sku-01vdvd</p>
+                            <p>Size Xs</p>
+                            <p>quantity 1</p>
                           </div>
                         </div>
                       </div>
-                      <div className="mx-6 mt-5 flex gap-4">
-                        <p className="mt-0.5 text-[15px] font-bold">1,620 THB</p>
-                        <Button
-                          // onClick={() => handleDelete(items)}
-                          className="bg-[#db4a4a] text-white w-6 h-6 rounded-sm hover:bg-red-400"
-                          
-                        >
-                          <Trash className="3xl:mx-1 mx-[2.5px] 3xl:text-[16px] text-[12px]" />
-                        </Button>
+                      <div className="mx-6 flex gap-4">
+                        <div className="flex items-center md:gap-8 gap-4">
+                          <p className="text-[15px] text-normal font-medium">
+                            ฿ 16,200
+                          </p>
+                          <button
+                            // onClick={() => handleDelete(items)}
+                            className="cursor-pointer text-red-400"
+                          >
+                            <Trash2 className="w-5.5 h-5.5" />
+                          </button>
+                        </div>
                       </div>
-                    </div>
-                    <div className="px-10">
-                      <div className="bg-gray-100 w-full h-[1px]" />
                     </div>
 
                   </div>
@@ -338,100 +348,100 @@ const orderConfirm = () => {
               </div>
             </div>
           </div>
-          <div className="absolute bottom-2 right-4 flex justify-end gap-2 ">
-            <div>
-            <Button
-              variant="arrow"
-              onClick={prevPage}
-              disabled={currentPage === 1}
-            >
-              <ChevronLeft className="!w-10 !h-5 text-[#667085]" />
-            </Button>
-            </div>
-            <div className='bg-white w-[50px] h-[25px] rounded-full mx-1'>
-              <span className='ml-3 text-[12px]'>
-                {currentPage} / {totalPages}
-              </span>
-            </div>
-            <div>
-            <Button
-              variant="arrow"
-              onClick={nextPage}
-              disabled={currentPage === totalPages}
-            >
-              <ChevronRight className="!w-10 !h-5 text-[#667085]" />
-            </Button>
+          <div className="flex justify-end items-center px-4 md:mt-4 mt-2">
+            <div className="flex">
+              <Button
+                variant="arrow"
+                onClick={prevPage}
+                disabled={currentPage === 1}
+              >
+                <ChevronLeft className="!w-10 !h-5 text-[#667085]" />
+              </Button>
+              <div className="mt-1.5 bg-background border-[0.5px] w-[60px] h-[26px] rounded-full mx-2 shadow-xs">
+                <span className="ml-4.5 text-[12px]">
+                  {currentPage} / {totalPages}
+                </span>
+              </div>
+              <Button
+                variant="arrow"
+                onClick={nextPage}
+                disabled={currentPage === totalPages}
+
+              >
+                <ChevronRight className="!w-10 !h-5 text-[#667085]" />
+              </Button>
             </div>
           </div>
         </div>
 
-        <div className="bg-white shadow-md md:mt-7 mt-4 3xl:mt-[40px] 3xl:h-[515px] xl:w-[30%] md:w-[31%] w-full h-[418px]
-          rounded-lg border-t-4 border-[#182361] "
+        <div
+          className="bg-background shadow-sm 2xl:mt-10 mt-6  md:w-[30.5%] w-full h-[420px] 
+            rounded-lg border-t-4 border-[#8a9bfa]"
         >
+
           {/* เนื้อหาฝั่งขวา */}
-          <div className="3xl:p-6 p-4 mx-2">
+          <div className="p-4">
             <HeadText title="Customer" />
             <SubText title="Infomation Detail" />
           </div>
 
-          <div className="p-2 mx-4">
-            <div className="border-t-[1px] border-gray-200 mt-[-10px]" />
+          <div className="p-2 mx-2">
+            <div className="border-t-1 mt-[-10px]" />
           </div>
 
-          <div className="3xl:mx-7 2xl:mx-5 md:mx-4">
-            <div className="grid grid-cols-3">
-              <div>
-                <div className="bg-gray-600 3xl:w-[65px] 3xl:h-[65px] 2xl:w-[50px] 2xl:h-[50px]
-                    w-[45px] h-[45px] rounded-full"
-                />
+          <div className="xl:mx-3 mx-4">
+            <div className="flex justify-between items-center">
+              <div className="flex gap-4 items-center">
+                <div className="bg-gray-600 w-[42px] 2xl:w-[50px] 2xl:h-[50px] h-[42px] rounded-full" />
+                <div className="flex flex-col mt-1 justify-center">
+                  <p className="text-md">Test User</p>
+                  <p className="text-sm text-secondary">Petunda911@gmail.com</p>
+                </div>
               </div>
-              <div className="flex flex-col mt-1 justify-center 3xl:mx-[-40px] 2xl:mx-[-35px] md:mx-[-35px]">
-                <p className="3xl:text-[25px] xl:text-[18px]">Codeine</p>
-                <p className="3xl:text-[15px] xl:text-[13px] lg:text-[11px] text-gray-500">Petunda911@gmail.com</p>
-              </div>
-              <div className="flex justify-end px-4 mt-4">
-                <MessageSquare className="3xl:text-[30px] text-[20px]" />
+              <div className="flex justify-end px-4">
+                <MessageSquare className="text-slate-550" />
               </div>
             </div>
           </div>
-        <div>
-      </div>
+          <div className="p-2 mx-2 mt-2">
+            <div className="border-t-1" />
+          </div>
+          <div>
+          </div>
 
-          <div className="mx-8">
-            <div className="mt-8">
-              <div className="flex justify-between">
-                <div>
-                  <p className="3xl:text-[22px] text-[18px] text-blue-gray-600">Contact</p>
-                </div>
-                <div>
-                  <p className="text-[12px]">Coppy</p>
-                </div>
+          <div className="mt-2 md:mx-4 mx-6">
+            <div className="flex justify-between items-center">
+              <div>
+                <p className="text-lg text-color">Contact</p>
+              </div>
+              <div>
+                <p className="text-[12px]">Copy</p>
               </div>
             </div>
 
             <div className="mx-2">
               <div className="flex gap-2">
-                <p className="3xl:text-[20px] xl:text-[18px] text-[15px]">Petunda</p>
-                <p className="3xl:text-[20px] xl:text-[18px] text-[15px]">Paksa</p>
+                <p className="text-md text-secondary">Petunda</p>
+                <p className="text-md text-secondary">Paksa</p>
               </div>
-              <p className="text-gray-700 3xl:text-[20px] text-[16px]">0988323099</p>
+              <p className="text-secondary text-md">0988323099</p>
             </div>
 
             <div className="p-2 mt-4 w-full">
-              <div className="border-t-[1px] border-gray-200 mt-[-10px]" />
+              <div className="border-t-1 mt-[-10px]" />
             </div>
 
-            <div className="">
-              <div className="flex justify-between">
-                <div className="flex-col">
-                  <p className="3xl:text-[22px] xl:text-[18px] text-[18px] text-blue-gray-600">Shipping Address</p>
-                  <div className="mx-2 3xl:text-[20px] text-[16px] mt-2">
-                    <p>20/12 Pruksa village 5 Bangyai nonthaburi 11140</p>
-                  </div>
+            <div className="mx-1">
+              <div className="flex justify-between items-center">
+                <div>
+                  <p className="text-lg text-color text-blue-gray-600">Shipping Adress</p>
                 </div>
                 <div>
-                  <p className="text-[12px] grid">Coppy</p>
+                  <p className="text-[12px]">Copy</p>
                 </div>
+              </div>
+              <div className="mt-2 w-[200px]">
+                <p className="text-md text-secondary">22/66 mock-up address my, bangkok 13432</p>
               </div>
             </div>
 

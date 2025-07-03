@@ -1,4 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@600..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+
+
 @import "tailwindcss";
+
 
 * {
   scrollbar-width: none;
@@ -6,8 +13,8 @@
 
 html, body {
   overflow: auto;
+  font-family: "Noto Sans", sans-serif;
 }
-
 
 body::-webkit-scrollbar {
   width: 0;
@@ -16,7 +23,6 @@ body::-webkit-scrollbar {
 }
 
 
-/* @custom-variant dark (&:is(.dark *)); */
 
 @theme  {
   --radius-sm: calc(var(--radius) - 4px);
@@ -54,11 +60,18 @@ body::-webkit-scrollbar {
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  --color-hover: var(--hover);
+  --color-icons-hover: var(--icons-hover);
+  --color-icons: var(--icons);
 
   --color-background-main: var(--background-main);
   --color-color: var(--text-color);
+  --color-add-button: var(--add-button);
+  --color-normal: var(--normal);
 
   --breakpoint-3xl: 100rem;
+   --font-number: Manrope, "sans-serif";
+   --font-robot: Roboto_Condensed, "sans-serif";
 }
 
 :root {
@@ -70,7 +83,7 @@ body::-webkit-scrollbar {
   --popover-foreground: oklch(0.145 0 0);
   --primary: oklch(0.205 0 0);
   --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
+  --secondary: oklch(48.906% 0.00006 271.152);
   --secondary-foreground: oklch(0.205 0 0);
   --muted: oklch(0.97 0 0);
   --muted-foreground: oklch(0.556 0 0);
@@ -93,10 +106,15 @@ body::-webkit-scrollbar {
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+  --hover: oklch(0.97 0 0);
+  --icons: oklch(0.4907 0.2699 292.56);
+  --icons-hover: oklch(42.998% 0.01735 224.968);
 
-  --background-main: oklch(0.9749 0.0025 228.78);
+  --background-main: oklch(97.245% 0.00318 15.3);
   --background: oklch(1 0 0);
-  --text-color: oklch(0.2795 0.0368 260.03);
+  --text-color: oklch(37.15% 0.00004 271.152);
+  --add-button: oklch(14.479% 0.00002 271.152);
+  --normal: oklch(41.654% 0.00005 271.152);
 }
 
 .dark {
@@ -108,14 +126,14 @@ body::-webkit-scrollbar {
   --popover-foreground: oklch(0.985 0 0);
   --primary: oklch(0.922 0 0);
   --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
+  --secondary: oklch(68.422% 0.02062 248.22);
   --secondary-foreground: oklch(0.985 0 0);
   --muted: oklch(0.269 0 0);
   --muted-foreground: oklch(0.708 0 0);
   --accent: oklch(0.269 0 0);
   --accent-foreground: oklch(0.985 0 0);
   --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
+  --border: oklch(100% 0.00011 271.152 / 0.086);
   --input: oklch(1 0 0 / 15%);
   --ring: oklch(0.556 0 0);
   --chart-1: oklch(0.488 0.243 264.376);
@@ -131,10 +149,16 @@ body::-webkit-scrollbar {
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+  --icons: oklch(51.659% 0.23759 292.817);
+  --hover: oklch(31.317% 0.00004 271.152);
+  --icons-hover: oklch(91.908% 0.01456 213.452);
 
-  --background-main: oklch(0.1756 0 0);
-  --background: oklch(0.1913 0 0);
-  --text-color: oklch(1 0.0368 260.03);
+  --background-main: oklch(23.503% 0.00003 271.152);
+  --background: oklch(26.862% 0.00003 271.152);
+  --text-color: oklch(94.985% 0.00324 198.939);
+
+  --add-button: oklch(26.862% 0.00003 271.152);
+  --normal: oklch(94.007% 0.00011 271.152);
 }
 
 @layer base {
@@ -145,3 +169,5 @@ body::-webkit-scrollbar {
     @apply bg-background text-foreground;
   }
 }
+
+

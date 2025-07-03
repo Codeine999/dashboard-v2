@@ -502,7 +502,7 @@ const sidebarMenuButtonVariants = cva(
     variants: {
       variant: {
         default: `
-        hover:bg-gray-100 hover:text-black
+        text-icons-hover
         data-[active=true]:!bg-[#9369db] 
         data-[active=true]:!text-white
       `,

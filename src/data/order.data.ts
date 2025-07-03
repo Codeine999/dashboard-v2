@@ -23,8 +23,6 @@ export const overviewData = [
 ];
 
 
-
-
 export const ordernotic = [
   {
     orderID: "KmakO-111",
@@ -176,116 +174,109 @@ export const ordernotic = [
 
 export const orderList = [
   {
-    orderID: "KmakO-111",
-    name: "xxxx",
+    orderID: "KmakO-02",
+    name: "Codine",
     detail: "Officia duis officia cillum aute voluptate laborum Lorem",
-    status: "Big",
-    time: "12:16 pm"
+    status: "Pending",
+    time: "12:16"
   },
   {
-    orderID: "KmakO-222",
-    name: "Codeiddne2",
+    orderID: "KmakO-03",
+    name: "Codeins",
     detail: "Officia duis officia cillum aute voluptate laborum Lorem",
-    status: "Big",
-    time: "12:16 pm"
+    status: "Paid",
+    time: "12:16"
   },
   {
-    orderID: "KmakO-111",
-    name: "Codeinsses3",
-    detail: "Officia duis officia cillum aute voluptate laborum Lorem",
-    status: "Big",
-    time: "12:16 pm"
-  },
-  {
-    orderID: "KmakO-f444",
+    orderID: "KmakO-04",
     name: "Codeine4",
     detail: "Officia duis officia cillum aute voluptate laborum Lorem",
-    status: "Big",
-    time: "12:16 pm"
+    status: "Paid",
+    time: "12:16"
   },
   {
-    orderID: "KmakO-j444",
+    orderID: "KmakO-05",
     name: "Codeine5",
     detail: "Officia duis officia cillum aute voluptat",
-    status: "Big",
-    time: "12:16 pm"
+    status: "Pending",
+    time: "12:16"
   },
   {
-    orderID: "KmakO-44j4",
+    orderID: "KmakO-06",
     name: "Codeine6",
     detail: "Officia duis officia cillum aute voluptate laborum Lorem",
-    status: "Big",
-    time: "12:16 pm"
+    status: "Cancel",
+    time: "12:16"
   },
   {
-    orderID: "KmakO-4y44",
+    orderID: "KmakO-07",
     name: "Codeine7",
     detail: "Officia duis officia cillum aute voluptate laborum Lorem",
-    status: "Big",
-    time: "12:16 pm"
+    status: "Paid",
+    time: "12:16"
   },
   {
-    orderID: "KmakO-444y",
+    orderID: "KmakO-08",
     name: "Codeine8",
     detail: "Officia duis officia cillum aute voluptate laborum Lorem",
-    status: "Big",
-    time: "12:16 pm"
+    status: "Paid",
+    time: "12:16"
   },
   {
-    orderID: "KmakO-444t",
+    orderID: "KmakO-09",
     name: "Codei14",
     detail: "Officia duis officia cillum aute voluptate laborum Lorem",
-    status: "Big",
-    time: "12:16 pm"
+    status: "Cancel",
+    time: "12:16"
   },
   {
-    orderID: "KmakO-444g",
-    name: "Codeine1",
-    detail: "Officia duis officia cillum aute voluptate laborum Loremddddddffvervrevrevevwevwevwevwevwvwevefsdsd10000-0000000ddddsdsdsddssssss0ddd",
-    status: "Big",
-    time: "12:16 pm"
-  },
-  {
-    orderID: "KmakO-4441",
+    orderID: "KmakO-10",
     name: "Codeine1",
     detail: "Officia duis officia cillum aute voluptate laborum Lorem",
-    status: "Big",
-    time: "12:16 pm"
+    status: "Paid",
+    time: "12:16"
   },
   {
-    orderID: "KmakO-44e",
+    orderID: "KmakO-11",
+    name: "Codeine1",
+    detail: "Officia duis officia cillum aute voluptate laborum Lorem",
+    status: "Paid",
+    time: "12:16"
+  },
+  {
+    orderID: "KmakO-12",
     name: "Codeine12",
     detail: "Officia duis officia cillum aute voluptate laborum Lorem",
-    status: "Big",
-    time: "12:16 pm"
+    status: "Cancel",
+    time: "12:16"
   },
   {
-    orderID: "KmakO-44e4",
+    orderID: "KmakO-13",
     name: "Codeine13",
     detail: "Officia duis officia cillum aute voluptate laborum Lorem",
-    status: "Big",
-    time: "12:16 pm"
+    status: "Pending",
+    time: "12:16"
   },
   {
-    orderID: "KmakO-444a",
+    orderID: "KmakO-14",
     name: "Codeine14",
     detail: "Officia duis officia cillum aute voluptate laborum Lorem",
-    status: "Big",
-    time: "12:16 pm"
+    status: "Pending",
+    time: "12:16"
   },
   {
-    orderID: "KmakO-44a4",
+    orderID: "KmakO-15",
     name: "Codeine15",
     detail: "Officia duis officia cillum aute voluptate laborum Lorem",
-    status: "Big",
-    time: "12:16 pm"
+    status: "Pending",
+    time: "12:16"
   },
   {
-    orderID: "KmakO-44s4",
+    orderID: "KmakO-16",
     name: "Codeine16",
     detail: "Officia duis officia cillum aute voluptate laborum Lorem",
-    status: "Big",
-    time: "12:16 pm"
+    status: "Paid",
+    time: "12:16"
   },
   
 ]
